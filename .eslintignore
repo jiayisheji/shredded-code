@@ -1,0 +1,7 @@
+dist
+node_modules
+coverage
+jest.config.js
+src/**/__tests__
+src/promise/promisesaplus-tests
+.eslintrc.js

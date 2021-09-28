@@ -1,0 +1,23 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2021", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@code/*": ["src/*"],
+      "*": ["./typings/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

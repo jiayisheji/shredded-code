@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "coenraads.bracket-pair-colorizer-2",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-close-tag",
+    "esbenp.prettier-vscode",
+    "knisterpeter.vscode-commitizen",
+    "steoates.autoimport",
+    "wmaurer.change-case",
+    "formulahendry.code-runner",
+    "oderwat.indent-rainbow"
+  ]
+}
