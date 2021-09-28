@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "Talk is cheap. Show me the code.",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
+  "scripts": {
+    "tsc": "tsc",
+    "ts-node": "ts-node",
+    "lint": "eslint ./src/**/*.ts",
+    "test": "jest --testPathIgnorePatterns=src/promise/promisesaplus-tests/",
+    "promisesaplus-tests": "jest --testPathPattern=src/promise/promisesaplus-tests/"
+  },
+  "keywords": [
+    "Promise"
+  ],
   "author": {
     "name": "jiayi",
     "email": "jiayisheji@gmail.com",
@@ -28,6 +36,7 @@
     "prettier": "^2.4.0",
     "standard-version": "^9.3.1",
     "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.2"
   },

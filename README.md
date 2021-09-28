@@ -4,6 +4,10 @@ Talk is cheap. Show me the code.
 
 ## Feature
 
+- Simulation of the standard
+
+  - [x] [Promise](src/promise/README.md)
+
 ## Running the project
 
 These instructions should be sufficient for one to get the project going on their local machine
@@ -29,6 +33,10 @@ cd shredded-code && npm install
 ```
 
 ### Running unit tests
+
+- Run `npm run test` to execute the unit tests via [Jest](https://jestjs.io/).
+
+- Run `npm run promisesaplus-tests` to execute the [Promises/A+](https://promisesaplus.com/) unit tests via [Jest](https://jestjs.io/).
 
 ## Support
 
