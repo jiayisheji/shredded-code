@@ -1,14 +1,19 @@
-import { testFulfilled, testRejected } from "./helpers/testThreeCases";
+import {testFulfilled, testRejected} from './helpers/testThreeCases';
 
-var dummy = { dummy: "dummy" }; // we fulfill or reject with this when we don't intend to test against it
+var dummy = {dummy: 'dummy'}; // we fulfill or reject with this when we don't intend to test against it
 
-describe("2.3.4: If `x` is not an object or function, fulfill `promise` with `x`", function () {
-  function testValue(expectedValue: any, stringRepresentation: string, beforeEachHook?: jest.ProvidesHookCallback, afterEachHook?: jest.ProvidesHookCallback) {
-    describe("The value is " + stringRepresentation, function () {
-      if (typeof beforeEachHook === "function") {
+describe('2.3.4: If `x` is not an object or function, fulfill `promise` with `x`', function () {
+  function testValue(
+    expectedValue: any,
+    stringRepresentation: string,
+    beforeEachHook?: jest.ProvidesHookCallback,
+    afterEachHook?: jest.ProvidesHookCallback
+  ) {
+    describe('The value is ' + stringRepresentation, function () {
+      if (typeof beforeEachHook === 'function') {
         beforeEach(beforeEachHook);
       }
-      if (typeof afterEachHook === "function") {
+      if (typeof afterEachHook === 'function') {
         afterEach(afterEachHook);
       }
 
@@ -36,17 +41,17 @@ describe("2.3.4: If `x` is not an object or function, fulfill `promise` with `x`
     });
   }
 
-  testValue(undefined, "`undefined`");
-  testValue(null, "`null`");
-  testValue(false, "`false`");
-  testValue(true, "`true`");
-  testValue(0, "`0`");
+  testValue(undefined, '`undefined`');
+  testValue(null, '`null`');
+  testValue(false, '`false`');
+  testValue(true, '`true`');
+  testValue(0, '`0`');
 
   testValue(
     true,
-    "`true` with `Boolean.prototype` modified to have a `then` method",
+    '`true` with `Boolean.prototype` modified to have a `then` method',
     function () {
-      (Boolean.prototype as any).then = function () { };
+      (Boolean.prototype as any).then = function () {};
     },
     function () {
       delete (Boolean.prototype as any).then;
@@ -55,9 +60,9 @@ describe("2.3.4: If `x` is not an object or function, fulfill `promise` with `x`
 
   testValue(
     1,
-    "`1` with `Number.prototype` modified to have a `then` method",
+    '`1` with `Number.prototype` modified to have a `then` method',
     function () {
-      (Number.prototype as any).then = function () { };
+      (Number.prototype as any).then = function () {};
     },
     function () {
       delete (Number.prototype as any).then;

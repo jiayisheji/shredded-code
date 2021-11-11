@@ -1,22 +1,21 @@
-import { deferred, rejected } from "./helpers/adapter";
-import { testRejected } from "./helpers/testThreeCases";
+import {deferred, rejected} from './helpers/adapter';
+import {testRejected} from './helpers/testThreeCases';
 
-var dummy = { dummy: "dummy" }; // we fulfill or reject with this when we don't intend to test against it
-var sentinel = { sentinel: "sentinel" }; // a sentinel fulfillment value to test for with strict equality
+var dummy = {dummy: 'dummy'}; // we fulfill or reject with this when we don't intend to test against it
+var sentinel = {sentinel: 'sentinel'}; // a sentinel fulfillment value to test for with strict equality
 
-describe("2.2.3: If `onRejected` is a function,", function () {
-  describe("2.2.3.1: it must be called after `promise` is rejected, with `promise`’s rejection reason as its " +
-    "first argument.", function () {
-      testRejected(sentinel, function (promise, done) {
-        promise.then(null, function onRejected(reason) {
-          expect(reason).toStrictEqual(sentinel);
-          done();
-        });
+describe('2.2.3: If `onRejected` is a function,', function () {
+  describe('2.2.3.1: it must be called after `promise` is rejected, with `promise`’s rejection reason as its ' + 'first argument.', function () {
+    testRejected(sentinel, function (promise, done) {
+      promise.then(null, function onRejected(reason) {
+        expect(reason).toStrictEqual(sentinel);
+        done();
       });
     });
+  });
 
-  describe("2.2.3.2: it must not be called before `promise` is rejected", function () {
-    test("rejected after a delay", function (done) {
+  describe('2.2.3.2: it must not be called before `promise` is rejected', function () {
+    test('rejected after a delay', function (done) {
       var d = deferred();
       var isRejected = false;
 
@@ -31,7 +30,7 @@ describe("2.2.3: If `onRejected` is a function,", function () {
       }, 50);
     });
 
-    test("never rejected", function (done) {
+    test('never rejected', function (done) {
       var d = deferred();
       var onRejectedCalled = false;
 
@@ -48,8 +47,8 @@ describe("2.2.3: If `onRejected` is a function,", function () {
     });
   });
 
-  describe("2.2.3.3: it must not be called more than once.", function () {
-    test("already-rejected", function (done) {
+  describe('2.2.3.3: it must not be called more than once.', function () {
+    test('already-rejected', function (done) {
       var timesCalled = 0;
 
       rejected(dummy).then(null, function onRejected() {
@@ -59,7 +58,7 @@ describe("2.2.3: If `onRejected` is a function,", function () {
       });
     });
 
-    test("trying to reject a pending promise more than once, immediately", function (done) {
+    test('trying to reject a pending promise more than once, immediately', function (done) {
       var d = deferred();
       var timesCalled = 0;
 
@@ -73,7 +72,7 @@ describe("2.2.3: If `onRejected` is a function,", function () {
       d.reject(dummy);
     });
 
-    test("trying to reject a pending promise more than once, delayed", function (done) {
+    test('trying to reject a pending promise more than once, delayed', function (done) {
       var d = deferred();
       var timesCalled = 0;
 
@@ -89,7 +88,7 @@ describe("2.2.3: If `onRejected` is a function,", function () {
       }, 50);
     });
 
-    test("trying to reject a pending promise more than once, immediately then delayed", function (done) {
+    test('trying to reject a pending promise more than once, immediately then delayed', function (done) {
       var d = deferred();
       var timesCalled = 0;
 
@@ -104,7 +103,7 @@ describe("2.2.3: If `onRejected` is a function,", function () {
       }, 50);
     });
 
-    test("when multiple `then` calls are made, spaced apart in time", function (done) {
+    test('when multiple `then` calls are made, spaced apart in time', function (done) {
       var d = deferred();
       var timesCalled = [0, 0, 0];
 
@@ -130,7 +129,7 @@ describe("2.2.3: If `onRejected` is a function,", function () {
       }, 150);
     });
 
-    test("when `then` is interleaved with rejection", function (done) {
+    test('when `then` is interleaved with rejection', function (done) {
       var d = deferred();
       var timesCalled = [0, 0];
 

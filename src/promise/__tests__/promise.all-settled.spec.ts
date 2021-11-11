@@ -14,32 +14,28 @@ describe('Promise.any', () => {
     test('returns a promise', () => {
       expect(Adapter.allSettled([1, 2, 3])).toBeInstanceOf(Adapter);
     });
-  })
+  });
 
   describe('should create the resolved', () => {
-    test('resolved with a correct value', (done) => {
-      Adapter.allSettled([
-        Adapter.resolve(1),
-        Adapter.reject(2),
-        Adapter.resolve(3),
-      ]).then(values => {
+    test('resolved with a correct value', done => {
+      Adapter.allSettled([Adapter.resolve(1), Adapter.reject(2), Adapter.resolve(3)]).then(values => {
         expect(values).toStrictEqual([
-          { value: 1, status: 'fulfilled' },
-          { reason: 2, status: 'rejected' },
-          { value: 3, status: 'fulfilled' },
+          {value: 1, status: 'fulfilled'},
+          {reason: 2, status: 'rejected'},
+          {value: 3, status: 'fulfilled'},
         ]);
         done();
       });
     });
-  })
+  });
 
   describe('should create the rejected', () => {
-    test('rejected as expected', (done) => {
+    test('rejected as expected', done => {
       // @ts-ignore
       Adapter.allSettled().catch(() => {
         expect(true).toBe(true);
         done();
       });
     });
-  })
-})
+  });
+});

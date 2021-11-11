@@ -7,8 +7,10 @@
     "tsc": "tsc",
     "ts-node": "ts-node",
     "lint": "eslint ./src/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
     "test": "jest --testPathIgnorePatterns=src/promise/promisesaplus-tests/",
-    "promisesaplus-tests": "jest --testPathPattern=src/promise/promisesaplus-tests/"
+    "promisesaplus-tests": "jest --testPathPattern=src/promise/promisesaplus-tests/",
+    "test:all": "npm run test && npm run promisesaplus-tests"
   },
   "keywords": [
     "Promise"

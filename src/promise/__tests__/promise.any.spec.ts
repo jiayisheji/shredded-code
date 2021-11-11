@@ -1,6 +1,6 @@
 import 'jest-extended';
 import Adapter from '../adapter';
-import { AggregateError } from "../aggregate-error";
+import {AggregateError} from '../aggregate-error';
 
 describe('Promise.any', () => {
   describe('should create the method', () => {
@@ -18,68 +18,52 @@ describe('Promise.any', () => {
       // @ts-ignore
       expect(Adapter.any([1, 2, 3])).toBeInstanceOf(Adapter);
     });
-  })
+  });
 
   describe('should create the resolved', () => {
-    test('resolved with a correct value', (done) => {
+    test('resolved with a correct value', done => {
       // @ts-ignore
-      Adapter.any([
-        Adapter.resolve(1),
-        Adapter.reject(2),
-        Adapter.resolve(3),
-      ]).then((value) => {
+      Adapter.any([Adapter.resolve(1), Adapter.reject(2), Adapter.resolve(3)]).then(value => {
         expect(value).toBe(1);
         done();
       });
     });
 
-    test('resolved with a correct value #1', (done) => {
+    test('resolved with a correct value #1', done => {
       // @ts-ignore
-      Adapter.any([
-        1,
-        Adapter.reject(2),
-        Adapter.resolve(3),
-      ]).then((value) => {
+      Adapter.any([1, Adapter.reject(2), Adapter.resolve(3)]).then(value => {
         expect(value).toBe(1);
         done();
       });
     });
 
-    test('resolved with a correct value #2', (done) => {
+    test('resolved with a correct value #2', done => {
       // @ts-ignore
-      Adapter.any([
-        Adapter.reject(2),
-        1,
-        Adapter.resolve(3),
-      ]).then((value) => {
+      Adapter.any([Adapter.reject(2), 1, Adapter.resolve(3)]).then(value => {
         expect(value).toBe(1);
         done();
       });
     });
 
-    test('resolved with a correct value #3', (done) => {
+    test('resolved with a correct value #3', done => {
       // @ts-ignore
-      Adapter.any([
-        Adapter.reject(2),
-        Adapter.resolve(1),
-        Adapter.resolve(3),
-      ]).then((value) => {
+      Adapter.any([Adapter.reject(2), Adapter.resolve(1), Adapter.resolve(3)]).then(value => {
         expect(value).toBe(1);
         done();
       });
     });
-  })
+  });
 
   describe('should create the rejected', () => {
-    test('rejected as expected', (done) => {
+    test('rejected as expected', done => {
       // @ts-ignore
       Adapter.any().catch(() => {
         expect(true).toBe(true);
         done();
-      })
+      });
     });
 
-    test('rejected as expected #1', (done) => {
+    test('rejected as expected #1', done => {
       // @ts-ignore
       Adapter.any([]).catch((error: AggregateError) => {
         expect(error).toBeInstanceOf(AggregateError);
@@ -88,17 +72,13 @@ describe('Promise.any', () => {
       });
     });
 
-    test('rejected as expected #2', (done) => {
+    test('rejected as expected #2', done => {
       // @ts-ignore
-      Adapter.any([
-        Adapter.reject(1),
-        Adapter.reject(2),
-        Adapter.reject(3),
-      ]).catch((error: AggregateError) => {
+      Adapter.any([Adapter.reject(1), Adapter.reject(2), Adapter.reject(3)]).catch((error: AggregateError) => {
         expect(error).toBeInstanceOf(AggregateError);
         expect(error.errors).toStrictEqual([1, 2, 3]);
         done();
       });
     });
-  })
-})
+  });
+});
